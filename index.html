@@ -1,193 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rngdelak's Portfolio</title>
-<style>
-  /* GENERAL STYLES */
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-  }
-  header {
-    background-color: #24292e;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-  }
-  header h1 {
-    margin: 0;
-  }
-  nav {
-    margin-top: 10px;
-  }
-  nav button {
-    background-color: #0366d6;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-  }
-  nav button:hover {
-    background-color: #024a9c;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equal personal website</title>
+  <style>
+    /* Base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* TAB STYLES */
-  .tab-content {
-    display: none;
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 20px auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  .tab-content.active {
-    display: block;
-  }
-  .tab-content h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  /* ABOUT ME STYLES */
-  .about p {
-    margin: 10px 0;
-  }
+    /* Header */
+    header {
+      width: 100%;
+      background-color: #24292e;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
 
-  /* PROJECT CARD STYLES */
-  .projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .project-card {
-    background-color: #e8f0fe;
-    border-radius: 10px;
-    padding: 15px;
-    width: 250px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-  }
-  .project-card.large {
-    width: 400px;
-    background-color: #d1e7dd;
-  }
-  .project-card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  .project-card button {
-    background-color: #0366d6;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .project-card button:hover {
-    background-color: #024a9c;
-  }
+    header h1 {
+      margin-bottom: 10px;
+    }
 
-  /* CONTACT STYLES */
-  .contact p {
-    margin: 10px 0;
-  }
-  .contact-label {
-    font-weight: bold;
-  }
-</style>
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    section {
+      width: 100%;
+      max-width: 900px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 40px 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* Projects */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .project {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s;
+    }
+
+    .project:hover {
+      transform: translateY(-3px);
+    }
+
+    .project h3 {
+      margin-bottom: 8px;
+    }
+
+    /* Links with inline underline */
+    .project a, .scratch-link a, section a {
+      color: #0366d6;
+      text-decoration: underline; /* inline underline */
+      font-weight: bold;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      display: inline;
+      transition: color 0.2s;
+    }
+
+    .project a:hover, .scratch-link a:hover, section a:hover {
+      color: #024ea2;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      background-color: #24292e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Responsive grid for projects on wider screens */
+    @media(min-width: 700px) {
+      .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Rngdelak's Portfolio</h1>
+  <h1>Equal personal website</h1>
   <nav>
-    <button onclick="openTab('about')">About Me</button>
-    <button onclick="openTab('projects')">Projects</button>
-    <button onclick="openTab('contact')">Contact</button>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<!-- ABOUT ME -->
-<section id="about" class="tab-content about active">
+<section id="about">
   <h2>About Me</h2>
-  <p>A normal 14 yrs old boy with normal habit and some specialist.</p>
-  <p>I'm an amateur coder, so yet nothing special about me. Well, I love coding and making projects is part of my life (although none of them were successful lol).</p>
-  <p>You can call me <strong>equal</strong> or <strong>rngdelak</strong>.</p>
-  <p>Pronouns: He/him</p>
+  <p>A regular 14 yrs old boi who love making project as a part of life (although none of them were successful)</p>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="tab-content projects">
+<section id="projects">
   <h2>My Projects</h2>
   <div class="projects-container">
-    <!-- Placeholder small project -->
-    <div class="project-card">
-      <img src="https://via.placeholder.com/250x150" alt="Project Image">
-      <h3>Small Project</h3>
-      <p>Brief description goes here. Placeholder text.</p>
-      <button>View More</button>
+    <div class="project">
+      <h3>BMS and Buchholz Ordinal Collapsing Function (Ψ OCF) LNGI</h3>
+      <p>pretty much low effort, thanks <a href="https://github.com/YT-AleX-1337" target="_blank">@YT-AleX-1337</a> for BMS ruler, and <a href="https://solarzone1010.github.io" target="_blank">@solarzone1010</a> for BMS to Buchholz Ordinal Collapsing Function converter (work up to (0)(1,1,1)(2,1,1)(3,1)(2))</p>
+      <a href="https://github.com/your-username/BMS_to_Buchholz_OCF" target="_blank">More details here</a>
     </div>
 
-    <!-- Placeholder medium project -->
-    <div class="project-card">
-      <img src="https://via.placeholder.com/250x150" alt="Project Image">
-      <h3>Medium Project</h3>
-      <p>Some details about this project. You can update later.</p>
-      <button>View More</button>
-    </div>
-
-    <!-- Placeholder large project -->
-    <div class="project-card large">
-      <img src="https://via.placeholder.com/400x200" alt="Project Image">
-      <h3>Large Project</h3>
-      <p>This project is bigger and more important. Placeholder content for now.</p>
-      <button>View More</button>
+    <div class="project">
+      <h3>+1 Global Clicker</h3>
+      <p>Clicker game but progress save globally. Kinda high effort</p>
+      <p class="scratch-link">Link to scratch: <a href="https://scratch.mit.edu/projects/1207897620/" target="_blank">Here</a></p>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="tab-content contact">
+<section id="contact">
   <h2>Contact</h2>
-  <p class="contact-label">Gmail:</p>
-  <p>phamlehaibang331@gmail.com</p>
-  
-  <p class="contact-label">Discord:</p>
-  <p>(Your Discord username here)</p>
-  
-  <p class="contact-label">Zalo:</p>
-  <p>(Your Zalo ID here)</p>
-  
-  <p class="contact-label">Phone number:</p>
-  <p>Still use my parent phone lol</p>
-  
-  <p>I hate social media like Facebook and X (formerly Twitter).</p>
+  <p>You can reach me at <a href="mailto:phamlehaibang331@gmail.com">phamlehaibang331@gmail.com</a>.</p>
 </section>
 
-<script>
-  function openTab(tabId) {
-    const tabs = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-  }
-</script>
+<footer>
+  <p>© 2025 Equal</p>
+</footer>
 
 </body>
 </html>
