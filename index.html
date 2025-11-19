@@ -1,170 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Equal personal website</title>
-  <style>
-    /* Base styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equal personal website</title>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; font-family: Arial, sans-serif; }
+  body { background: #f4f4f4; color: #333; }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  /* Header top menu */
+  header {
+    width: 100%;
+    background-color: #24292e;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+  }
+  header h1 { margin-bottom: 8px; }
+  nav { display: inline-block; }
+  nav a {
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav a:hover, nav a.active { text-decoration: underline; }
 
-    /* Header */
-    header {
-      width: 100%;
-      background-color: #24292e;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
+  /* Sections */
+  section { display: none; max-width: 900px; margin: 20px auto; background: white; border-radius: 10px; padding: 30px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  section.active { display: block; }
 
-    header h1 {
-      margin-bottom: 10px;
-    }
+  .section-header { font-size: 22px; font-weight: bold; margin-bottom: 10px; text-align: left; }
+  .divider { height: 2px; background: #000; margin-bottom: 20px; }
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  /* Widget styles */
+  .widget { margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
+  .widget-header { background: #eee; padding: 10px 15px; cursor: pointer; font-weight: bold; }
+  .widget-header:hover { background: #ddd; }
+  .widget-content { display: none; padding: 10px 15px; }
+  .widget-content.active { display: block; }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+  /* Projects grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    gap: 15px;
+    justify-content: start;
+  }
+  .project-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  .project-item img:hover { transform: scale(1.1); }
 
-    /* Sections */
-    section {
-      width: 100%;
-      max-width: 900px;
-      background-color: white;
-      border-radius: 10px;
-      padding: 40px 20px;
-      margin: 20px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+  /* Contact links */
+  a { color: #0366d6; text-decoration: underline; }
 
-    section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    /* Projects */
-    .projects-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .project {
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: transform 0.2s;
-    }
-
-    .project:hover {
-      transform: translateY(-3px);
-    }
-
-    .project h3 {
-      margin-bottom: 8px;
-    }
-
-    /* Links with inline underline */
-    .project a, .scratch-link a, section a {
-      color: #0366d6;
-      text-decoration: underline; /* inline underline */
-      font-weight: bold;
-      background: none;
-      padding: 0;
-      border-radius: 0;
-      display: inline;
-      transition: color 0.2s;
-    }
-
-    .project a:hover, .scratch-link a:hover, section a:hover {
-      color: #024ea2;
-      text-decoration: underline;
-    }
-
-    /* Footer */
-    footer {
-      width: 100%;
-      background-color: #24292e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Responsive grid for projects on wider screens */
-    @media(min-width: 700px) {
-      .projects-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-    }
-  </style>
+  /* Responsive for small screens */
+  @media(max-width:700px){
+    nav { display: block; }
+    nav a { display: inline-block; margin: 0 10px 10px; }
+  }
+</style>
 </head>
 <body>
 
 <header>
   <h1>Equal personal website</h1>
   <nav>
-    <a href="#about">About Me</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <a href="#" onclick="showSection('about')" class="active">About Me</a>
+    <a href="#" onclick="showSection('projects')">Projects</a>
+    <a href="#" onclick="showSection('contact')">Contact</a>
   </nav>
 </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>A regular 14 yrs old boi who love making project as a part of life (although none of them were successful)</p>
+<section id="about" class="active">
+  <div class="section-header">About Me</div>
+  <div class="divider"></div>
+  <p>Im a regular 14 yrs old boi who love making project as a part of life (although none of them were successful)</p>
 </section>
 
 <section id="projects">
-  <h2>My Projects</h2>
-  <div class="projects-container">
-    <div class="project">
-      <h3>BMS and Buchholz Ordinal Collapsing Function (Ψ OCF) LNGI</h3>
-      <p>pretty much low effort, thanks <a href="https://github.com/YT-AleX-1337" target="_blank">@YT-AleX-1337</a> for BMS ruler, and <a href="https://solarzone1010.github.io" target="_blank">@solarzone1010</a> for BMS to Buchholz Ordinal Collapsing Function converter (work up to (0)(1,1,1)(2,1,1)(3,1)(2))</p>
-      <a href="https://github.com/your-username/BMS_to_Buchholz_OCF" target="_blank">More details here</a>
-    </div>
+  <div class="section-header">My Projects</div>
+  <div class="divider"></div>
 
-    <div class="project">
-      <h3>+1 Global Clicker</h3>
-      <p>Clicker game but progress save globally. Kinda high effort</p>
-      <p class="scratch-link">Link to scratch: <a href="https://scratch.mit.edu/projects/1207897620/" target="_blank">Here</a></p>
+  <!-- Widget: Googology -->
+  <div class="widget">
+    <div class="widget-header" onclick="toggleWidget(this)">Googology ▾</div>
+    <div class="widget-content">
+      <div class="projects-grid">
+        <div class="project-item">
+          <a href="https://github.com/your-username/BMS_to_Buchholz_OCF" target="_blank">
+            <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Project1" alt="BMS Project">
+          </a>
+        </div>
+        <div class="project-item">
+          <a href="https://scratch.mit.edu/projects/1207897620/" target="_blank">
+            <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Project2" alt="+1 Global Clicker">
+          </a>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Widget: Another Topic -->
+  <div class="widget">
+    <div class="widget-header" onclick="toggleWidget(this)">Another Topic ▾</div>
+    <div class="widget-content">
+      <div class="projects-grid">
+        <div class="project-item">
+          <a href="#" target="_blank">
+            <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Proj1" alt="Project 1">
+          </a>
+        </div>
+        <div class="project-item">
+          <a href="#" target="_blank">
+            <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Proj2" alt="Project 2">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
+  <div class="section-header">Contact</div>
+  <div class="divider"></div>
   <p>You can reach me at <a href="mailto:phamlehaibang331@gmail.com">phamlehaibang331@gmail.com</a>.</p>
 </section>
 
-<footer>
-  <p>© 2025 Equal</p>
-</footer>
+<script>
+// Switch sections
+function showSection(id){
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector(`nav a[onclick="showSection('${id}')"]`).classList.add('active');
+}
+
+// Toggle widget
+function toggleWidget(header) {
+  const content = header.nextElementSibling;
+  content.classList.toggle('active');
+}
+</script>
 
 </body>
 </html>
