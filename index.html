@@ -6,7 +6,8 @@
 <title>Equal personal website</title>
 <style>
   * { box-sizing: border-box; margin:0; padding:0; font-family: Arial, sans-serif; }
-  body { background: #f4f4f4; color: #333; }
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; background: #f4f4f4; color: #333; }
 
   /* Header top menu */
   header {
@@ -27,7 +28,8 @@
   nav a:hover, nav a.active { text-decoration: underline; }
 
   /* Sections */
-  section { display: none; max-width: 900px; margin: 20px auto; background: white; border-radius: 10px; padding: 30px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  main { flex: 1; max-width: 900px; margin: 20px auto; width: 100%; }
+  section { display: none; background: white; border-radius: 10px; padding: 30px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
   section.active { display: block; }
 
   .section-header { font-size: 22px; font-weight: bold; margin-bottom: 10px; text-align: left; }
@@ -47,6 +49,7 @@
     gap: 15px;
     justify-content: start;
   }
+  .project-item { position: relative; }
   .project-item img {
     width: 80px;
     height: 80px;
@@ -58,10 +61,37 @@
   }
   .project-item img:hover { transform: scale(1.1); }
 
+  /* Project labels */
+  .project-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    text-align: center;
+    padding: 3px 0;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    border-radius: 0 0 8px 8px;
+  }
+  .project-item:hover .project-label { opacity: 1; }
+
   /* Contact links */
   a { color: #0366d6; text-decoration: underline; }
 
-  /* Responsive for small screens */
+  /* Footer */
+  footer {
+    width: 100%;
+    background-color: #24292e;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+  }
+
+  /* Responsive */
   @media(max-width:700px){
     nav { display: block; }
     nav a { display: inline-block; margin: 0 10px 10px; }
@@ -79,6 +109,7 @@
   </nav>
 </header>
 
+<main>
 <section id="about" class="active">
   <div class="section-header">About Me</div>
   <div class="divider"></div>
@@ -97,11 +128,13 @@
         <div class="project-item">
           <a href="https://github.com/your-username/BMS_to_Buchholz_OCF" target="_blank">
             <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Project1" alt="BMS Project">
+            <div class="project-label">BMS to Buchholz OCF</div>
           </a>
         </div>
         <div class="project-item">
           <a href="https://scratch.mit.edu/projects/1207897620/" target="_blank">
             <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Project2" alt="+1 Global Clicker">
+            <div class="project-label">+1 Global Clicker</div>
           </a>
         </div>
       </div>
@@ -110,23 +143,24 @@
 
   <!-- Widget: Another Topic -->
   <div class="widget">
-    <div class="widget-header" onclick="toggleWidget(this)">Another Topic ▾</div>
+    <div class="widget-header" onclick="toggleWidget(this)">Network ▾</div>
     <div class="widget-content">
       <div class="projects-grid">
         <div class="project-item">
-          <a href="#" target="_blank">
-            <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Proj1" alt="Project 1">
+          <a href="https://github.com/your-username/BMS_to_Buchholz_OCF" target="_blank">
+            <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Project1" alt="BMS Project">
+            <div class="project-label">BMS to Buchholz OCF</div>
           </a>
         </div>
         <div class="project-item">
-          <a href="#" target="_blank">
-            <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Proj2" alt="Project 2">
+          <a href="https://scratch.mit.edu/projects/1207897620/" target="_blank">
+            <img src="https://via.placeholder.com/80/0366d6/ffffff?text=Project2" alt="+1 Global Clicker">
+            <div class="project-label">+1 Global Clicker</div>
           </a>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 
 <section id="contact">
@@ -134,6 +168,11 @@
   <div class="divider"></div>
   <p>You can reach me at <a href="mailto:phamlehaibang331@gmail.com">phamlehaibang331@gmail.com</a>.</p>
 </section>
+</main>
+
+<footer>
+  <p>© 2025 Equal</p>
+</footer>
 
 <script>
 // Switch sections
