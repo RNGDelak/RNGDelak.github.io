@@ -103,20 +103,70 @@
 <header>
   <h1>Equal personal website</h1>
   <nav>
-    <a href="#" onclick="showSection('about')" class="active">About Me</a>
-    <a href="#" onclick="showSection('projects')">Projects</a>
+    <a href="#" onclick="showSection('about','blog')" class="active">About Me</a>
+    <a href="#" onclick="showSection('projects');">Projects</a>
     <a href="#" onclick="showSection('contact')">Contact</a>
   </nav>
+
 </header>
 
 <main>
+  <!-- About Me section -->
 <section id="about" class="active">
-  <div class="section-header">About Me</div>
-  <div class="divider"></div>
-  <p>Im a regular 14 yrs old boi who love making project as a part of life (although none of them were successful)</p>
-  <p>Pretty much im amateur</p>
-</section>
+    <div class="section-header">About Me</div>
+    <div class="divider"></div>
+    <p>Hi! Im Hải Bằng , but you can also call me "Equal" or "RNGDelak" (my github username)</p>
+    <p>Im am from Vietnam</p>
+    <p>Im a regular 14 yrs old boi who love making project as a part of life (although none of them were successful)</p>
+    <p>Pretty much im an amateur coder so yea pretty much less to say</p>
+    <br>
+    <p>Pronouns : He/him</p>
+  </section>
+  <!-- Blog section -->
+  <section id="blog" class = "active">
+    <div class="section-header">My Blogs</div> 
+    <p>I use dd/mm/yyyy format for date</p>
+    <p>English is not my native languages so some i will write by Vietnamese</p>
+    <br>
+    <div class="divider"></div>
 
+    <!-- Blog item 1 -->
+    <div class="widget">
+      <div class="widget-header" onclick="toggleWidget(this)">20/11/2025 ▾</div>
+      <div class="widget-content">
+        <p>Happy Teacher day!!!!</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6tOdXfwABc1tVruMeRBrz4qpKQlJcMAkaQXWnIJAl3Q&s=10"
+             alt="Blog image"
+             style="max-width:100%; border-radius:8px; margin-top:10px;">
+        <br>
+        <p>Hôm nay chúc các thầy các cô các kiểu rồi đi ăn với 9.8</p>
+        <p>Còn lí do ko đi với 9.5? Hỏi mẹ tui á</p>
+        <br>
+        <p>À quên mất, cảm giác về trường song ngữ (Trường tiểu học) thật là "nostalgic"</p>
+      </div>
+    </div>
+
+    <!-- Blog item 2 -->
+    <div class="widget">
+      <div class="widget-header" onclick="toggleWidget(this)">19/11/2025 ▾</div>
+      <div class="widget-content">
+        <p>Cố gắng lắm mới viết dc mấy dòng này! Nếu tui học sếp Lê Thị Huệ thì đã không như vậy. Rất tiếc sự thật là mẹ tui đã chuyển tui sang 9.8 trong lúc tui say giấc...(dramatic lol)</p>
+      </div>
+    </div> 
+
+
+    <!-- Blog item 3 -->
+    <div class="widget">
+      <div class="widget-header" onclick="toggleWidget(this)">18/11/2025 ▾</div>
+      <div class="widget-content">
+        <p>I made this website. This is pretty new to me so I have to commit several times to get it right. Kinda happy to have my own website!!!</p>
+      </div>
+    </div>
+  </section>
+
+
+    
+  
 <section id="projects">
   <div class="section-header">My Projects</div>
   <div class="divider"></div>
@@ -186,12 +236,23 @@
 
 <script>
 // Switch sections
-function showSection(id){
-  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelector(`nav a[onclick="showSection('${id}')"]`).classList.add('active');
-}
+  function showSection(...ids) {
+    // Hide all sections FIRST
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+
+    // Clear active menu buttons
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+
+    // Show all sections requested
+    ids.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) section.classList.add('active');
+
+      const navButton = document.querySelector(`nav a[onclick="showSection('${id}')"]`);
+      if (navButton) navButton.classList.add('active');
+    });
+  }
+
 
 // Toggle widget
 function toggleWidget(header) {
