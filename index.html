@@ -1,270 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Equal personal website</title>
-<style>
-  * { box-sizing: border-box; margin:0; padding:0; font-family: Arial, sans-serif; }
-  html, body { height: 100%; }
-  body { display: flex; flex-direction: column; background: #f4f4f4; color: #333; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equal personal website</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-  /* Header top menu */
-  header {
-    width: 100%;
-    background-color: #24292e;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-  }
-  header h1 { margin-bottom: 8px; }
-  nav { display: inline-block; }
-  nav a {
-    color: white;
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  nav a:hover, nav a.active { text-decoration: underline; }
+    html,
+    body {
+      height: 100%;
+    }
 
-  /* Sections */
-  main { flex: 1; max-width: 900px; margin: 20px auto; width: 100%; }
-  section { display: none; background: white; border-radius: 10px; padding: 30px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
-  section.active { display: block; }
+    body {
+      display: flex;
+      flex-direction: column;
+      background: #f4f4f4;
+      color: #333;
+    }
 
-  .section-header { font-size: 22px; font-weight: bold; margin-bottom: 10px; text-align: left; }
-  .divider { height: 2px; background: #000; margin-bottom: 20px; }
+    /* Header top menu */
+    header {
+      width: 100%;
+      background-color: #24292e;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
 
-  /* Widget styles */
-  .widget { margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
-  .widget-header { background: #eee; padding: 10px 15px; cursor: pointer; font-weight: bold; }
-  .widget-header:hover { background: #ddd; }
-  .widget-content { display: none; padding: 10px 15px; }
-  .widget-content.active { display: block; }
+    header h1 {
+      margin-bottom: 8px;
+    }
 
-  /* Projects grid */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 80px);
-    gap: 15px;
-    justify-content: start;
-  }
-  .project-item { position: relative; }
-  .project-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    transition: transform 0.2s;
-    cursor: pointer;
-  }
-  .project-item img:hover { transform: scale(1.1); }
+    nav {
+      display: inline-block;
+    }
 
-  /* Project labels */
-  .project-label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    text-align: center;
-    padding: 3px 0;
-    font-size: 12px;
-    opacity: 0;
-    transition: opacity 0.2s;
-    border-radius: 0 0 8px 8px;
-  }
-  .project-item:hover .project-label { opacity: 1; }
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-  /* Contact links */
-  a { color: #0366d6; text-decoration: underline; }
+    nav a:hover,
+    nav a.active {
+      text-decoration: underline;
+    }
 
-  /* Footer */
-  footer {
-    width: 100%;
-    background-color: #24292e;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: auto;
-  }
+    /* Sections */
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 20px auto;
+      width: 100%;
+    }
 
-  /* Responsive */
-  @media(max-width:700px){
-    nav { display: block; }
-    nav a { display: inline-block; margin: 0 10px 10px; }
-  }
-</style>
+    section {
+      display: none;
+      background: white;
+      border-radius: 10px;
+      padding: 30px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .section-header {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .divider {
+      height: 2px;
+      background: #000;
+      margin-bottom: 20px;
+    }
+
+    /* Widget styles */
+    .widget {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .widget-header {
+      background: #eee;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .widget-header:hover {
+      background: #ddd;
+    }
+
+    .widget-content {
+      display: none;
+      padding: 10px 15px;
+    }
+
+    .widget-content.active {
+      display: block;
+    }
+
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 80px);
+      gap: 15px;
+      justify-content: start;
+    }
+
+    .project-item {
+      position: relative;
+    }
+
+    .project-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .project-item img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Project labels */
+    .project-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 3px 0;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      border-radius: 0 0 8px 8px;
+    }
+
+    .project-item:hover .project-label {
+      opacity: 1;
+    }
+
+    /* Contact links */
+    a {
+      color: #0366d6;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      background-color: #24292e;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media(max-width:700px) {
+      nav {
+        display: block;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 0 10px 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Equal personal website</h1>
-  <nav>
-    <a href="#" onclick="showSection('about','blog')" class="active">About Me</a>
-    <a href="#" onclick="showSection('projects');">Projects</a>
-    <a href="#" onclick="showSection('contact')">Contact</a>
-  </nav>
+  <header>
+    <h1>Equal personal website</h1>
+    <nav>
+      <a href="#" onclick="showSection('about','blog')" class="active">About Me</a>
+      <a href="#" onclick="showSection('projects');">Projects</a>
+      <a href="#" onclick="showSection('contact')">Contact</a>
+    </nav>
 
-</header>
+  </header>
 
-<main>
-  <!-- About Me section -->
-<section id="about" class="active">
-    <div class="section-header">About Me</div>
-    <div class="divider"></div>
-    <p>Hi! Im Hải Bằng , but you can also call me "Equal" or "RNGDelak" (my github username)</p>
-    <p>Im am from Vietnam</p>
-    <p>Im a regular 14 yrs old boi who love making project as a part of life (although none of them were successful)</p>
-    <p>Pretty much im an amateur coder so yea pretty much less to say</p>
-    <br>
-    <p>Pronouns : He/him</p>
-    <p>I also have a Youtube channel <a href="https://youtube.com/@rngdelak?si=Twr552A-jHUy_bGn" target="_blank">@rngdelak(clickable)</a></p>
-  <p>And a scratch account <a href = "https://scratch.mit.edu/users/RNGDelak/" target="_blank">https://scratch.mit.edu/users/RNGDelak</a></p>
-  <p>And a github account <a href = "https://github.com/RNGDelak" target="_blank">https://github.com/RNGDelak</a></p>
-  </section>
-  <!-- Blog section -->
-  <section id="blog" class = "active">
-    <div class="section-header">My Blogs</div> 
-    <p>I use dd/mm/yyyy format for date</p>
-    <p>English is not my native languages so some i will write by Vietnamese</p>
-    <br>
-    <div class="divider"></div>
+  <main>
+    <!-- About Me section -->
+    <section id="about" class="active">
+      <div class="section-header">About Me</div>
+      <div class="divider"></div>
+      <p>Hi! Im Hải Bằng , but you can also call me "Equal" or "RNGDelak" (my github username)</p>
+      <p>Im am from Vietnam</p>
+      <p>Im a regular 14 yrs old boi who love making project as a part of life (although none of them were successful)
+      </p>
+      <p>Pretty much im an amateur coder so yea pretty much less to say</p>
+      <br>
+      <p>Pronouns : He/him</p>
+      <p>I also have a Youtube channel <a href="https://www.youtube.com/@rngdelak"
+          target="_blank">https://www.youtube.com/@rngdelak</a>.</p>
+      <p>And a scratch account <a href="https://scratch.mit.edu/users/GameDelevopement/"
+          target="_blank">https://scratch.mit.edu/users/GameDelevopement/</a>.</p>
+      <p>And a github account <a href="https://github.com/RNGDelak" target="_blank">https://github.com/RNGDelak</a>.</p>
+    </section>
+    <!-- Blog section -->
+    <section id="blog" class="active">
+      <div class="section-header">My Blogs</div>
+      <p>I use dd/mm/yyyy format for date</p>
+      <p>English is not my native languages so some i will write by Vietnamese</p>
+      <br>
+      <div class="divider"></div>
 
-    <!-- Blog item 1 -->
-    <div class="widget">
-      <div class="widget-header" onclick="toggleWidget(this)">20/11/2025 ▾</div>
-      <div class="widget-content">
-        <p>Happy Teacher day!!!!</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6tOdXfwABc1tVruMeRBrz4qpKQlJcMAkaQXWnIJAl3Q&s=10"
-             alt="Blog image"
-             style="max-width:100%; border-radius:8px; margin-top:10px;">
-        <br>
-        <p>Hôm nay chúc các thầy các cô các kiểu rồi đi ăn với 9.8</p>
-        <p>Còn lí do ko đi với 9.5? Hỏi mẹ tui á</p>
-        <br>
-        <p>À quên mất, cảm giác về trường song ngữ (Trường tiểu học) thật là "nostalgic"</p>
-      </div>
-    </div>
-
-    <!-- Blog item 2 -->
-    <div class="widget">
-      <div class="widget-header" onclick="toggleWidget(this)">19/11/2025 ▾</div>
-      <div class="widget-content">
-        <p>Cố gắng lắm mới viết dc mấy dòng này! Nếu tui học sếp Lê Thị Huệ thì đã không như vậy. Rất tiếc sự thật là mẹ tui đã chuyển tui sang 9.8 trong lúc tui say giấc...(dramatic lol)</p>
-      </div>
-    </div> 
-
-
-    <!-- Blog item 3 -->
-    <div class="widget">
-      <div class="widget-header" onclick="toggleWidget(this)">18/11/2025 ▾</div>
-      <div class="widget-content">
-        <p>I made this website. This is pretty new to me so I have to commit several times to get it right. Kinda happy to have my own website!!!</p>
-      </div>
-    </div>
-  </section>
-
-
-    
-  
-<section id="projects">
-  <div class="section-header">My Projects</div>
-  <div class="divider"></div>
-
-  <!-- Widget: Googology -->
-  <div class="widget">
-    <div class="widget-header" onclick="toggleWidget(this)">Googology ▾</div>
-    <div class="widget-content">
-      <div class="projects-grid">
-        <div class="project-item">
-          <a href="https://github.com/RNGDelak/BMS_to_Buchholz_OCF" target="_blank">
-            <img src="https://github.com/RNGDelak/RNGDelak.github.io/blob/main/External%20files/Images/Icon/BMS%20and%20%CE%A8.png?raw=true" alt="BMS Project">
-            <div class="project-label">BMS to Buchholz OCF</div>
-          </a>
-        </div>
-        <div class="project-item">
-          <a href="https://github.com/RNGDelak/Godgahnum_js" target="_blank">
-            <img src="https://github.com/RNGDelak/RNGDelak.github.io/blob/main/External%20files/Images/Icon/Godgahnum.js.png?raw=true" alt="Godgahnum.js">
-            <div class="project-label">Godgahnum.js</div>
-          </a>
+      <!-- Blog item 1 -->
+      <div class="widget">
+        <div class="widget-header" onclick="toggleWidget(this)">21/11/2025 ▾</div>
+        <div class="widget-content">
+          <p>Cô "Sáu" về quê do bố cô hấp hối vui ơi là vui!!!!!</p>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Widget: Mapping -->
-  <div class="widget">
-    <div class="widget-header" onclick="toggleWidget(this)">Mapping & Network management ▾</div>
-    <div class="widget-content">
-      <div class="projects-grid">
-        <div class="project-item">
-          <a href="https://github.com/RNGDelak/Netmapping_project" target="_blank">
-            <img src="https://github.com/RNGDelak/RNGDelak.github.io/blob/main/External%20files/Images/Icon/Netmapping%20Project.png?raw=true" alt="Netmapping project">
-            <div class="project-label">Netmapping project</div>
-          </a>
+      <!-- Blog item 1 -->
+      <div class="widget">
+        <div class="widget-header" onclick="toggleWidget(this)">20/11/2025 ▾</div>
+        <div class="widget-content">
+          <p>Happy Teacher day!!!!</p>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6tOdXfwABc1tVruMeRBrz4qpKQlJcMAkaQXWnIJAl3Q&s=10"
+            alt="Blog image" style="max-width:100%; border-radius:8px; margin-top:10px;">
+          <br>
+          <p>Hôm nay chúc các thầy các cô các kiểu rồi đi ăn với 9.8</p>
+          <p>Còn lí do ko đi với 9.5? Hỏi mẹ tui á</p>
+          <br>
+          <p>À quên mất, cảm giác về trường song ngữ (Trường tiểu học) thật là "nostalgic"</p>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Widget: Scratch -->
-  <div class="widget">
-    <div class="widget-header" onclick="toggleWidget(this)">Scratch ▾</div>
-    <div class="widget-content">
-      <div class="projects-grid">
-        <div class="project-item">
-          <a href="https://scratch.mit.edu/projects/1207897620" target="_blank">
-            <img src="https://github.com/RNGDelak/RNGDelak.github.io/blob/main/External%20files/Images/Icon/+1%20Global%20Clicker.png?raw=true" alt="+1 Global Clicker">
-            <div class="project-label">+1 Global Clicker</div>
-          </a>
+      <!-- Blog item 2 -->
+      <div class="widget">
+        <div class="widget-header" onclick="toggleWidget(this)">19/11/2025 ▾</div>
+        <div class="widget-content">
+          <p>Cố gắng lắm mới viết dc mấy dòng này! Nếu tui học sếp Lê Thị Huệ thì đã không như vậy. Rất tiếc sự thật là
+            mẹ tui đã chuyển tui sang 9.8 trong lúc tui say giấc...(dramatic lol)</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-header">Contact</div>
-  <div class="divider"></div>
-  <p>You can reach me at <a href="mailto:phamlehaibang331@gmail.com">phamlehaibang331@gmail.com</a>.</p>
-  <p>Or you can find me on <a href="https://github.com/RNGDelak" target="_blank">GitHub</a>.</p>
-  <p>Or you can EVEN find me on Discord (DM me <a>@RNGDelak)</a>.</p>
-</section>
-</main>
-
-<footer>
-  <p>© 2025 Equal</p>
-</footer>
-
-<script>
-// Switch sections
-  function showSection(...ids) {
-    // Hide all sections FIRST
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-
-    // Clear active menu buttons
-    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-
-    // Show all sections requested
-    ids.forEach(id => {
-      const section = document.getElementById(id);
-      if (section) section.classList.add('active');
-
-      const navButton = document.querySelector(`nav a[onclick="showSection('${id}')"]`);
-      if (navButton) navButton.classList.add('active');
-    });
-  }
 
 
-// Toggle widget
-function toggleWidget(header) {
-  const content = header.nextElementSibling;
-  content.classList.toggle('active');
-}
-</script>
+      <!-- Blog item 3 -->
+      <div class="widget">
+        <div class="widget-header" onclick="toggleWidget(this)">18/11/2025 ▾</div>
+        <div class="widget-content">
+          <p>I made this website. This is pretty new to me so I have to commit several times to get it right. Kinda
+            happy to have my own website!!!</p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section id="projects">
+      <div class="section-header">My Projects</div>
+      <div class="divider"></div>
+
+      <!-- Widget: Googology -->
+      <div class="widget">
+        <div class="widget-header" onclick="toggleWidget(this)">Googology ▾</div>
+        <div class="widget-content">
+          <div class="projects-grid">
+            <div class="project-item">
+              <a href="https://github.com/RNGDelak/BMS_to_Buchholz_OCF" target="_blank">
+                <img
+                  src="https://github.com/RNGDelak/RNGDelak.github.io/blob/main/External%20files/Images/Icon/BMS%20and%20%CE%A8.png?raw=true"
+                  alt="BMS Project">
+                <div class="project-label">BMS to Buchholz OCF</div>
+              </a>
+            </div>
+            <div class="project-item">
+              <a href="https://github.com/RNGDelak/Godgahnum_js" target="_blank">
+                <img
+                  src="https://github.com/RNGDelak/RNGDelak.github.io/blob/main/External%20files/Images/Icon/Godgahnum.js.png?raw=true"
+                  alt="Godgahnum.js">
+                <div class="project-label">Godgahnum.js</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Widget: Mapping -->
+      <div class="widget">
+        <div class="widget-header" onclick="toggleWidget(this)">Mapping & Network management ▾</div>
+        <div class="widget-content">
+          <div class="projects-grid">
+            <div class="project-item">
+              <a href="https://github.com/RNGDelak/Netmapping_project" target="_blank">
+                <img
+                  src="https://github.com/RNGDelak/RNGDelak.github.io/blob/main/External%20files/Images/Icon/Netmapping%20Project.png?raw=true"
+                  alt="Netmapping project">
+                <div class="project-label">Netmapping project</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Widget: Scratch -->
+      <div class="widget">
+        <div class="widget-header" onclick="toggleWidget(this)">Scratch ▾</div>
+        <div class="widget-content">
+          <div class="projects-grid">
+            <div class="project-item">
+              <a href="https://scratch.mit.edu/projects/1207897620" target="_blank">
+                <img
+                  src="https://github.com/RNGDelak/RNGDelak.github.io/blob/main/External%20files/Images/Icon/+1%20Global%20Clicker.png?raw=true"
+                  alt="+1 Global Clicker">
+                <div class="project-label">+1 Global Clicker</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header">Contact</div>
+      <div class="divider"></div>
+      <p>You can reach me via : </p>
+      <p>Email : <a href="mailto:phamlehaibang331@gmail.com">phamlehaibang331@gmail.com</a>.</p>
+      <p>Github : <a href="https://github.com/RNGDelak" target="_blank">https://github.com/RNGDelak</a>.</p>
+      <p>Discord : <a>@RNGDelak</a>.</p>
+      <p>Scratch : <a
+          href="https://scratch.mit.edu/users/GameDelevopement/">https://scratch.mit.edu/users/GameDelevopement/</a>.
+      </p>
+      <p>Youtube : <a href="https://www.youtube.com/@rngdelak" target="_blank">https://www.youtube.com/@rngdelak</a>.</p
+        </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Equal</p>
+  </footer>
+
+  <script>
+    // Switch sections
+    function showSection(...ids) {
+      // Hide all sections FIRST
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+
+      // Clear active menu buttons
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+
+      // Show all sections requested
+      ids.forEach(id => {
+        const section = document.getElementById(id);
+        if (section) section.classList.add('active');
+
+        const navButton = document.querySelector(`nav a[onclick="showSection('${id}')"]`);
+        if (navButton) navButton.classList.add('active');
+      });
+    }
+
+
+    // Toggle widget
+    function toggleWidget(header) {
+      const content = header.nextElementSibling;
+      content.classList.toggle('active');
+    }
+  </script>
 
 </body>
+
 </html>
